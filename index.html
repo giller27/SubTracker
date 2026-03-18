@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubTrack - Трекер Підписок</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome для іконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js для графіків -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <!-- Day.js для роботи з датами -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/plugin/utc.js"></script>
+</head>
+<body>
+    <!-- Навігаційна панель -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i class="fas fa-credit-card"></i>
+                <span>SubTrack</span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#dashboard" class="nav-link active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="#subscriptions" class="nav-link"><i class="fas fa-list"></i> Мої підписки</a></li>
+                <li><a href="#add-service" class="nav-link"><i class="fas fa-plus-circle"></i> Додати</a></li>
+                <li><a href="#insights" class="nav-link"><i class="fas fa-chart-bar"></i> Аналітика</a></li>
+                <li><a href="#calendar" class="nav-link"><i class="fas fa-calendar"></i> Календар</a></li>
+                <li><a href="#settings" class="nav-link"><i class="fas fa-cog"></i> Налаштування</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Контейнер для сторінок -->
+    <div id="pages-container"></div>
+
+    <!-- Модальне вікно для редагування підписки -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeEditModal()">&times;</span>
+            <h2>Редагувати підписку</h2>
+            <form id="editServiceForm">
+                <input type="hidden" id="editServiceId">
+                <div class="form-group">
+                    <label for="editServiceName">Назва сервісу</label>
+                    <input type="text" id="editServiceName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editServicePrice">Ціна</label>
+                        <input type="number" id="editServicePrice" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editServiceCategory">Категорія</label>
+                        <select id="editServiceCategory">
+                            <option value="Стрімінг">Стрімінг</option>
+                            <option value="Робота">Робота</option>
+                            <option value="Хмарні сховища">Хмарні сховища</option>
+                            <option value="Спорт">Спорт</option>
+                            <option value="Інше">Інше</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editNextBillingDate">Дата наступної оплати</label>
+                    <input type="date" id="editNextBillingDate" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Зберегти</button>
+                    <button type="button" onclick="closeEditModal()" class="btn btn-secondary">Скасувати</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 SubTrack. Усі права захищені. Розроблено для твого розуму.</p>
+    </footer>
+
+    <!-- Core modules -->
+    <script src="js/config.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/calculations.js"></script>
+    
+    <!-- Page modules -->
+    <script src="js/pages/page-loader.js"></script>
+    <script src="js/pages/navigation.js"></script>
+    <script src="js/pages/dashboard.js"></script>
+    <script src="js/pages/subscriptions.js"></script>
+    <script src="js/pages/add-service.js"></script>
+    <script src="js/pages/insights.js"></script>
+    <script src="js/pages/calendar.js"></script>
+    <script src="js/pages/settings.js"></script>
+    <script src="js/pages/modal.js"></script>
+    <script src="js/pages/init.js"></script>
+</body>
+</html>

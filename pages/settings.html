@@ -1,0 +1,74 @@
+<!-- НАЛАШТУВАННЯ -->
+<div id="settings" class="page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Налаштування</h1>
+            <p class="subtitle">Персоналізуй свій досвід</p>
+        </div>
+
+        <!-- Валюта -->
+        <div class="settings-section">
+            <h2>Основна валюта</h2>
+            <div class="currency-options">
+                <label class="currency-option">
+                    <input type="radio" name="currency" value="₴" checked>
+                    <span>₴ Українська гривня (UAH)</span>
+                </label>
+                <label class="currency-option">
+                    <input type="radio" name="currency" value="$">
+                    <span>$ Американський долар (USD)</span>
+                </label>
+                <label class="currency-option">
+                    <input type="radio" name="currency" value="€">
+                    <span>€ Євро (EUR)</span>
+                </label>
+                <label class="currency-option">
+                    <input type="radio" name="currency" value="£">
+                    <span>£ Британський фунт (GBP)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Сповіщення -->
+        <div class="settings-section">
+            <h2>Сповіщення</h2>
+            <div class="notification-options">
+                <label class="checkbox-option">
+                    <input type="checkbox" id="notificationsDays" checked>
+                    <span>Повідомляти за <input type="number" id="notificationsDaysValue" min="1" value="3" class="days-input"> днів до платежу</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" id="emailNotifications">
+                    <span>Сповіщення на пошту</span>
+                </label>
+                <label class="checkbox-option" id="telegramOption">
+                    <input type="checkbox" id="telegramNotifications">
+                    <span>Telegram бот (ID: <input type="text" id="telegramId" placeholder="Введи Telegram ID" class="telegram-input">)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Експорт даних -->
+        <div class="settings-section">
+            <h2>Експорт даних</h2>
+            <button onclick="exportToCSV()" class="btn btn-secondary">
+                <i class="fas fa-download"></i> Експортувати у CSV
+            </button>
+            <button onclick="exportToJSON()" class="btn btn-secondary">
+                <i class="fas fa-download"></i> Експортувати у JSON
+            </button>
+            <button onclick="importData()" class="btn btn-secondary">
+                <i class="fas fa-upload"></i> Імпортувати дані
+            </button>
+            <input type="file" id="importInput" hidden accept=".json">
+        </div>
+
+        <!-- Небезпечні операції -->
+        <div class="settings-section danger">
+            <h2>Небезпечна зона</h2>
+            <button onclick="clearAllData()" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Видалити всі дані
+            </button>
+        </div>
+    </div>
+</div>

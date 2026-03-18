@@ -1,0 +1,39 @@
+<!-- МОЇ ПІДПИСКИ -->
+<div id="subscriptions" class="page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Мої підписки</h1>
+            <p class="subtitle">Повний список всіх активних сервісів</p>
+        </div>
+
+        <!-- Фільтри -->
+        <div class="filters-section">
+            <div class="filter-group">
+                <label for="categoryFilter">Категорія:</label>
+                <select id="categoryFilter" onchange="filterSubscriptions()">
+                    <option value="">Всі категорії</option>
+                    <option value="Стрімінг">Стрімінг</option>
+                    <option value="Робота">Робота</option>
+                    <option value="Хмарні сховища">Хмарні сховища</option>
+                    <option value="Спорт">Спорт</option>
+                    <option value="Інше">Інше</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sortFilter">Сортування:</label>
+                <select id="sortFilter" onchange="filterSubscriptions()">
+                    <option value="date">По даті додавання</option>
+                    <option value="price-asc">По ціні (зростаючо)</option>
+                    <option value="price-desc">По ціні (спадаючо)</option>
+                    <option value="name">По назві</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <input type="text" id="searchFilter" placeholder="Пошук сервісу..." onkeyup="filterSubscriptions()">
+            </div>
+        </div>
+
+        <!-- Список підписок -->
+        <div class="subscriptions-list" id="subscriptionsList"></div>
+    </div>
+</div>

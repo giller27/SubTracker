@@ -1,0 +1,65 @@
+<!-- DASHBOARD -->
+<div id="dashboard" class="page active">
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>Твій Фінансовий Стан</h1>
+            <p class="subtitle">Швидкий огляд всіх тисячних річних витрат</p>
+        </div>
+
+        <!-- Головні показники -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon" style="background: #FF6B6B;">
+                    <i class="fas fa-calendar-month"></i>
+                </div>
+                <h3>Цього місяця</h3>
+                <p class="metric-value"><span id="monthly-total">0</span> <span id="currency">₴</span></p>
+                <p class="metric-label">витрат цього місяця</p>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon" style="background: #4ECDC4;">
+                    <i class="fas fa-circle-notch"></i>
+                </div>
+                <h3>На рік</h3>
+                <p class="metric-value"><span id="yearly-total">0</span> <span id="currency">₴</span></p>
+                <p class="metric-label">витрат на рік</p>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon" style="background: #95E1D3;">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Активні</h3>
+                <p class="metric-value"><span id="active-count">0</span></p>
+                <p class="metric-label">активних підписок</p>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon" style="background: #F38181;">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Наступна оплата</h3>
+                <p class="metric-value" id="next-payment-days">-</p>
+                <p class="metric-label" id="next-payment-service">через 7 днів</p>
+            </div>
+        </div>
+
+        <!-- Графік витрат -->
+        <div class="chart-container">
+            <div class="chart-header">
+                <h2>Витрати по днях місяця</h2>
+            </div>
+            <canvas id="dailyChart"></canvas>
+        </div>
+
+        <!-- Категорії -->
+        <div class="categories-section">
+            <h2>Розподіл по категоріях</h2>
+            <div class="categories-grid" id="categoriesGrid"></div>
+        </div>
+
+        <!-- Сповіщення про стан -->
+        <div id="alerts-container"></div>
+    </div>
+</div>

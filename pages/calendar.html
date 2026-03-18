@@ -1,0 +1,27 @@
+<!-- КАЛЕНДАР ПЛАТЕЖІВ -->
+<div id="calendar" class="page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Календар платежів</h1>
+            <p class="subtitle">Коли твої наступні платежі</p>
+        </div>
+
+        <!-- Навігація по календарю -->
+        <div class="calendar-controls">
+            <button onclick="previousMonth()" class="btn-small"><i class="fas fa-chevron-left"></i></button>
+            <h2 id="calendarMonthYear"></h2>
+            <button onclick="nextMonth()" class="btn-small"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Календар -->
+        <div class="calendar-container">
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <!-- Легенда -->
+        <div class="calendar-legend">
+            <h3>Платежі в цьому місяці</h3>
+            <div id="upcomingPayments"></div>
+        </div>
+    </div>
+</div>

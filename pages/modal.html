@@ -1,0 +1,38 @@
+<!-- Модальне вікно для редагування підписки -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeEditModal()">&times;</span>
+        <h2>Редагувати підписку</h2>
+        <form id="editServiceForm">
+            <input type="hidden" id="editServiceId">
+            <div class="form-group">
+                <label for="editServiceName">Назва сервісу</label>
+                <input type="text" id="editServiceName" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="editServicePrice">Ціна</label>
+                    <input type="number" id="editServicePrice" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="editServiceCategory">Категорія</label>
+                    <select id="editServiceCategory">
+                        <option value="Стрімінг">Стрімінг</option>
+                        <option value="Робота">Робота</option>
+                        <option value="Хмарні сховища">Хмарні сховища</option>
+                        <option value="Спорт">Спорт</option>
+                        <option value="Інше">Інше</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editNextBillingDate">Дата наступної оплати</label>
+                <input type="date" id="editNextBillingDate" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Зберегти</button>
+                <button type="button" onclick="closeEditModal()" class="btn btn-secondary">Скасувати</button>
+            </div>
+        </form>
+    </div>
+</div>

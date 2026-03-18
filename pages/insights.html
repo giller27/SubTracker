@@ -1,0 +1,39 @@
+<!-- АНАЛІТИКА -->
+<div id="insights" class="page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Аналітика</h1>
+            <p class="subtitle">Глибока статистика твоїх витрат</p>
+        </div>
+
+        <!-- Порівняння витрат -->
+        <div class="chart-container">
+            <div class="chart-header">
+                <h2>Витрати за останні 6 місяців</h2>
+            </div>
+            <canvas id="monthlyChart"></canvas>
+        </div>
+
+        <!-- Розподіл по категоріях (круговий графік) -->
+        <div class="insights-row">
+            <div class="chart-container half">
+                <div class="chart-header">
+                    <h2>Розподіл по категоріях</h2>
+                </div>
+                <canvas id="categoryChart"></canvas>
+            </div>
+
+            <!-- Поради щодо економії -->
+            <div class="advice-container half">
+                <h2>Поради щодо економії</h2>
+                <div id="adviceList"></div>
+            </div>
+        </div>
+
+        <!-- Прогноз на рік -->
+        <div class="forecast-section">
+            <h2>Фінансовий прогноз</h2>
+            <div class="forecast-grid" id="forecastGrid"></div>
+        </div>
+    </div>
+</div>
