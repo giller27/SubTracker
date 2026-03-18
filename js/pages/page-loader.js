@@ -5,13 +5,11 @@ let isLoadingPage = false;
 
 async function loadPage(pageName) {
   try {
-    console.log(`Loading page: ${pageName}`);
     const response = await fetch(`pages/${pageName}.html`);
     if (!response.ok) {
       throw new Error(`Failed to load ${pageName}.html (${response.status})`);
     }
     const html = await response.text();
-    console.log(`Page loaded successfully: ${pageName}`);
 
     // Очищаємо контейнер і завантажуємо нову сторінку
     const container = document.getElementById("pages-container");
@@ -27,46 +25,18 @@ async function loadPage(pageName) {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = html;
 
-    console.log(`Temp div children count: ${tempDiv.children.length}`);
-
     // Знаходимо перший елемент (пропускаємо коментарі)
     let firstChild = tempDiv.firstElementChild;
-    console.log(`First child element:`, firstChild);
-    console.log(`First child tag:`, firstChild?.tagName);
-    console.log(`First child ID:`, firstChild?.id);
-    console.log(`First child classes:`, firstChild?.className);
 
     // Додаємо класи до першого елементу
     if (firstChild) {
       firstChild.classList.remove("active"); // Видаляємо активний клас, якщо був
       firstChild.classList.add("page", "active");
-      console.log(`Updated classes:`, firstChild.className);
     }
 
     // Копіюємо контент в основний контейнер
     while (tempDiv.firstChild) {
       container.appendChild(tempDiv.firstChild);
-    }
-
-    console.log(
-      `Container after update:`,
-      container.innerHTML.substring(0, 200),
-    );
-    console.log(`Container content length: ${container.innerHTML.length}`);
-
-    // Перевіримо, що контейнер видимий
-    const computedStyle = window.getComputedStyle(container);
-    console.log(`Container display:`, computedStyle.display);
-    console.log(`Container visibility:`, computedStyle.visibility);
-    console.log(`Container height:`, computedStyle.height);
-
-    // Перевіримо, що перший дочірній елемент видимий
-    const pageElement = container.firstElementChild;
-    if (pageElement) {
-      const pageStyle = window.getComputedStyle(pageElement);
-      console.log(`Page element display:`, pageStyle.display);
-      console.log(`Page element visibility:`, pageStyle.visibility);
-      console.log(`Page element height:`, pageStyle.height);
     }
 
     // Додаємо обробники подій після завантаження DOM
@@ -139,47 +109,12 @@ function initializePageEvents(pageName) {
       });
     });
 
-    const notificationsDaysCheckbox =
-      document.getElementById("notificationsDays");
-    if (notificationsDaysCheckbox) {
-      notificationsDaysCheckbox.addEventListener("change", function () {
+    const notificationsCheckbox = document.getElementById(
+      "notificationsEnabled",
+    );
+    if (notificationsCheckbox) {
+      notificationsCheckbox.addEventListener("change", function () {
         store.settings.notificationsEnabled = this.checked;
-        store.saveSettings();
-      });
-    }
-
-    const notificationsDaysValue = document.getElementById(
-      "notificationsDaysValue",
-    );
-    if (notificationsDaysValue) {
-      notificationsDaysValue.addEventListener("change", function () {
-        store.settings.notificationsDays = parseInt(this.value);
-        store.saveSettings();
-      });
-    }
-
-    const emailNotifications = document.getElementById("emailNotifications");
-    if (emailNotifications) {
-      emailNotifications.addEventListener("change", function () {
-        store.settings.emailNotifications = this.checked;
-        store.saveSettings();
-      });
-    }
-
-    const telegramNotifications = document.getElementById(
-      "telegramNotifications",
-    );
-    if (telegramNotifications) {
-      telegramNotifications.addEventListener("change", function () {
-        store.settings.telegramNotifications = this.checked;
-        store.saveSettings();
-      });
-    }
-
-    const telegramId = document.getElementById("telegramId");
-    if (telegramId) {
-      telegramId.addEventListener("change", function () {
-        store.settings.telegramId = this.value;
         store.saveSettings();
       });
     }
@@ -189,17 +124,14 @@ function initializePageEvents(pageName) {
 // Обробник історії навігації (для кнопки "Назад" в браузері)
 window.addEventListener("popstate", function (e) {
   const pageId = e.state?.page || "dashboard";
-  console.log(`Popstate event: ${pageId}`);
   showPage(pageId);
 });
 async function showPage(pageId) {
   if (isLoadingPage) {
-    console.log("Page is already loading, skipping...");
     return;
   }
 
   isLoadingPage = true;
-  console.log(`showPage called with: ${pageId}`);
 
   // Змінюємо URL без перезавантаження сторінки
   window.history.pushState({ page: pageId }, "", `#${pageId}`);
@@ -220,7 +152,6 @@ async function showPage(pageId) {
     isLoadingPage = false;
     return;
   }
-
   // Виконуємо специфічне ініціалізацію для сторінки
   if (pageId === "dashboard") {
     setTimeout(() => {

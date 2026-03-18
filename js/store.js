@@ -20,11 +20,7 @@ class SubscriptionStore {
       ? JSON.parse(data)
       : {
           currency: CONFIG.defaultCurrency,
-          notificationsDays: 3,
           notificationsEnabled: true,
-          emailNotifications: false,
-          telegramNotifications: false,
-          telegramId: "",
         };
   }
 
